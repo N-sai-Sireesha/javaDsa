@@ -81,6 +81,63 @@ class doull {
         temp.next=newnode;
         return;
     }
+    void deleteatend(int data){
+        if(head==null){
+            System.out.println("ll is empty");
+            return;
+        }
+        if(head.next==null){
+            head=null;
+            return;
+        }
+        ListNode temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        temp.prev.next=null;
+        return;
+    }
+    void deleteatbeg(int data){
+        if(head==null){
+            System.out.println("ll is empty");
+        }
+        if(head.next==null){
+            head=null;
+            return;
+        }
+        ListNode temp=head;
+        head=head.next;
+        head.prev=null;
+
+}
+    void deleteatpos(int data,int pos ){
+        if(pos==1){
+            head=head.next;
+            if(head!=null){
+                head.prev=null;
+                return;
+            }
+            
+        }
+        ListNode temp=head;
+        int count=1;
+        while(temp!=null && count<pos){
+            temp=temp.next;
+            count++;
+        }
+        if(temp==null){
+            System.out.println("out of range");
+            return;
+        }
+        if(temp.prev!=null){
+            temp.prev.next=temp.next;
+        }
+        if(temp.next!=null){
+            temp.next.prev=temp.prev;
+        }
+        
+
+    }
 }
 
 public class dll1 {
@@ -90,8 +147,15 @@ public class dll1 {
         d.insertatend(20);
         d.insertatend(30);
         d.insertatend(40);
+        d.insertatend(50);
+        d.insertatend(60);
+        d.insertatend(70);
+        d.deleteatend(70);
+        d.deleteatbeg(10);
+        d.deleteatpos(20, 1);
         d.insertatpos(25,3);
         System.out.println("Doubly Linked List Traversal:"); 
         d.traversal();                                        
     }
 }
+ 
